@@ -1,0 +1,38 @@
+{
+  "Records": [
+    {
+      "eventVersion": "2.1",
+      "eventSource": "aws:s3",
+      "awsRegion": "sa-east-1",
+      "eventTime": "2020-05-29T22:30:33.924Z",
+      "eventName": "ObjectCreated:Put",
+      "userIdentity": {
+        "principalId": "AWS:AROAUSAMKMUDSLLTD6CE6:paulo.werneck"
+      },
+      "requestParameters": {
+        "sourceIPAddress": "179.55.161.236"
+      },
+      "responseElements": {
+        "x-amz-request-id": "A7D0F36330510FA5",
+        "x-amz-id-2": "xQwsiM72zpDJUj8U8WHzgmS/JgLxAst1zf/N+tMcWQe3zdtsUngd4emwXaRdCHvLrKzuGmRoOAGrKw6BQ+Cnn4/KFkLl79+x"
+      },
+      "s3": {
+        "s3SchemaVersion": "1.0",
+        "configurationId": "9d32069d-25a2-4e68-b8ca-f329caa39886",
+        "bucket": {
+          "name": "bkt-api-viavarejo-uat",
+          "ownerIdentity": {
+            "principalId": "A1KM3C7W2GPKD4"
+          },
+          "arn": "arn:aws:s3:::bkt-api-viavarejo-uat"
+        },
+        "object": {
+          "key": "results/crediario_cdc/99999999-9999-9999-999999999999/output.csv",
+          "size": 71,
+          "eTag": "e5929b1db887f578736a665bf725e0d8",
+          "sequencer": "005ED18D0A4E6D86F5"
+        }
+      }
+    }
+  ]
+}

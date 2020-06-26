@@ -29,7 +29,7 @@ def TuringEMRStepJobs(cluster_name, region, bucket, step_job_parameters):
             'ActionOnFailure': 'CONTINUE',
             'HadoopJarStep': {
                 'Jar': 'command-runner.jar',
-                'Args': ['spark-submit', '--deploy-mode', 'client', '--supervise',
+                'Args': ['spark-submit', '--deploy-mode', 'client', '--supervise', '--conf',  'spark.pyspark.python=/usr/bin/python3.6',
                          path_code_stepjob, bucket, *step_job_parameters.values()]
             }
         }

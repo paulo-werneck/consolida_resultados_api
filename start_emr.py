@@ -29,19 +29,19 @@ def TuringEMRStepJobs(cluster_name, region, bucket, step_job_parameters):
             'ActionOnFailure': 'CONTINUE',
             'HadoopJarStep': {
                 'Jar': 'command-runner.jar',
-                'Args': ['spark-submit', '--deploy-mode', 'client', '--supervise', '--conf',  'spark.pyspark.python=/usr/bin/python3.6',
-                         path_code_stepjob, bucket, *step_job_parameters.values()]
+                'Args': ['spark-submit', '--deploy-mode', 'client', '--supervise', '--conf',
+                         'spark.pyspark.python=/usr/bin/python3.6', path_code_stepjob,
+                         bucket, *step_job_parameters.values()]
             }
         }
     ]
 
     tags = [
-        {'Key': 'Nam    e', 'Value': cluster_name},
+        {'Key': 'Name', 'Value': cluster_name},
         {'Key': 'Customer', 'Value': nm_empresa},
-        {'Key': 'Environment', 'Value': 'Prod'},
-        {'Key': 'Product', 'Value': ''},
-        {'Key': 'User', 'Value': 'paulo.werneck@powerofdata.com'},
-        {'Key': 'billingSection', 'Value': 'PoweOfData'}
+        {'Key': 'Environment', 'Value': 'PROD'},
+        {'Key': 'EMR', 'Value': 'Report'},
+        {'Key': 'Product', 'Value': 'ScoreAPI'}
     ]
 
     if qtd_core >= 1:

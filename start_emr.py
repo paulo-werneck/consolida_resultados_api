@@ -19,7 +19,7 @@ def TuringEMRStepJobs(cluster_name, region, bucket, step_job_parameters):
     conn_emr = boto3.client('emr', region)
 
     release_label = 'emr-5.23.0'
-    log_uri = f's3://{bucket}/Logs/Clusters/'
+    log_uri = f's3://{bucket}/logs/EMR/clusters/'
 
     path_code_stepjob = f'file:///tmp/emr_step_job/step_job01_etl_consolidacao_api.py'
 

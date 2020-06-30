@@ -58,7 +58,7 @@ def load_athena_partitions(db_name=database, lst_tables=None):
         athena.start_query_execution(
             QueryString=f'MSCK REPAIR TABLE {db_name}.{table}',
             QueryExecutionContext={'Database': db_name},
-            ResultConfiguration={'OutputLocation': f's3://{bucket}/report/athena-query-results/'})
+            ResultConfiguration={'OutputLocation': f's3://{bucket}/logs/Athena/'})
         logging.info(f'Carregadas partições do Athena na tabela: {table}')
 
 

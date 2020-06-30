@@ -8,7 +8,7 @@ Properties:
   Description: 'function to enforce API requests / returns'
   #Environment:
   #  Environment
-  FunctionName: 'consolildacao_resulta_api_Via_Varejo'
+  FunctionName: 'turing-uat-scoreapi-lbd-report'
   Handler: 'lambda_function.lambda_handler'
   #KmsKeyArn: String
   Layers:

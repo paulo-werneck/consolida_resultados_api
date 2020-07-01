@@ -9,7 +9,7 @@ PATH_JOB=/tmp/emr_step_job/
 
 mkdir -p $PATH_JOB
 
-aws s3 cp s3://bkt-api-viavarejo-uat/setup/consolidacao_results_api/emr/step_jobs/step_job01_etl_consolidacao_api.zip $PATH_JOB
+aws s3 cp s3://bkt-api-viavarejo-prd/setup/report/emr/step_jobs/step_job01_etl_consolidacao_api.zip $PATH_JOB
 
 cd $PATH_JOB
 

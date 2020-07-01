@@ -116,7 +116,7 @@ def TuringEMRStepJobs(cluster_name, region, bucket, step_job_parameters):
             'Name': 'Pacotes Python',
             'ScriptBootstrapAction':
                 {
-                    'Path': f's3://{bucket}/setup/consolidacao_results_api/emr/config_cluster_start.sh'
+                    'Path': f's3://{bucket}/setup/report/emr/config_cluster_start.sh'
                 }
         }
     ]

@@ -29,17 +29,23 @@ def get_files_to_process():
     return lst_files_final
 
 
+def casting_fields(data_frame, schema_casting):
+    """ casting fields of input files """
+
+    return data_frame.select([
+        data_frame[field].cast(data_type).alias(field_alias) for field, field_alias, data_type in schema_casting
+    ])
+
+
 def process_files():
     """ Process files found in stage and ingestion it in target converted in parquet """
 
     lst_tables = set()
 
     for path in get_files_to_process():
+        df = spark.read.csv(path=f's3://{path}/', header=True, inferSchema=True)
         if 'input' in path:
-            new_schema = schemas.schema_input_file
-            df = spark.read.csv(path=f's3://{path}/', schema=new_schema, header=True)
-        else:
-            df = spark.read.csv(path=f's3://{path}/', header=True, inferSchema=True)
+            df = casting_fields(data_frame=df, schemas.schema_input_file)
 
         table = 'tb_{model}_{file}'.format(model=path.split("/")[3], file=path.split("/")[-2])
         lst_tables.add(table)

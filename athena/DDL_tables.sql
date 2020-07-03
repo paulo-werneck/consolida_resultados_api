@@ -1,12 +1,12 @@
 CREATE DATABASE TURING_PRD_SCOREAPI_USAGE
-LOCATION 's3://bkt-api-viavarejo-uat/report/target';
+LOCATION 's3://bkt-api-viavarejo-prd/report/target';
 
 
 
 CREATE EXTERNAL TABLE TURING_PRD_SCOREAPI_USAGE.TB_CREDIARIO_CDC_OUTPUT
 (
 	ID_TRANSACAO STRING,
-	CD_CLI INT,
+	CD_CLI BIGINT,
 	DATA STRING,
 	SEGMENTO TINYINT,
 	HIST_VV DOUBLE,
@@ -14,7 +14,7 @@ CREATE EXTERNAL TABLE TURING_PRD_SCOREAPI_USAGE.TB_CREDIARIO_CDC_OUTPUT
 )
 PARTITIONED BY (dt_particao bigint)
 STORED AS PARQUET
-LOCATION 's3://bkt-api-viavarejo-uat/report/target/turing_prd_scoreapi_usage/tb_crediario_cdc_output/';
+LOCATION 's3://bkt-api-viavarejo-prd/report/target/turing_prd_scoreapi_usage/tb_crediario_cdc_output/';
 
 
 
@@ -52,7 +52,7 @@ CREATE EXTERNAL TABLE TURING_PRD_SCOREAPI_USAGE.TB_CREDIARIO_CDC_INPUT
     ACORDO_AN_EVER                      INT,
     ID_FILIAL                           INT,
     CLI_TIPO                            INT,
-    MOTIVO_M                            INT,
+    MOTIVO_M                            BOOLEAN,
     DATREF_ABT                          INT,
     DATREF_ABT_PARTITION                INT,
     DTH_PROC_CARGA                      BIGINT,
@@ -240,4 +240,4 @@ CREATE EXTERNAL TABLE TURING_PRD_SCOREAPI_USAGE.TB_CREDIARIO_CDC_INPUT
 )
 PARTITIONED BY (dt_particao bigint)
 STORED AS PARQUET
-LOCATION 's3://bkt-api-viavarejo-uat/report/target/turing_prd_scoreapi_usage/tb_crediario_cdc_input/';
+LOCATION 's3://bkt-api-viavarejo-prd/report/target/turing_prd_scoreapi_usage/tb_crediario_cdc_input/';

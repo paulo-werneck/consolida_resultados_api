@@ -45,7 +45,7 @@ def process_files():
     for path in get_files_to_process():
         df = spark.read.csv(path=f's3://{path}/', header=True, inferSchema=True)
         if 'input' in path:
-            df = casting_fields(data_frame=df, schemas.schema_input_file)
+            df = casting_fields(data_frame=df, schema_casting=schemas.schema_input_file)
 
         table = 'tb_{model}_{file}'.format(model=path.split("/")[3], file=path.split("/")[-2])
         lst_tables.add(table)

@@ -1,7 +1,6 @@
 import boto3
 from datetime import datetime
 import pandas as pd
-from start_emr import TuringEMRStepJobs
 
 s3 = boto3.client('s3')
 current_date = datetime.today().strftime('%Y%m%d')
@@ -28,20 +27,6 @@ def insert_id_and_partition(bucket, key_stage, key_folder_id):
     df.to_csv(f's3://{bucket}/{key_stage}', index=False, index_label=False)
 
 
-def check_files_to_process(bucket, prefix):
-    """ Return True if there are old files to process """
-
-    response = s3.list_objects(
-        Bucket=bucket,
-        Prefix=prefix
-    )
-
-    if response.get('Contents'):
-        if current_date not in response.get('Contents')[0].get('Key'):
-            return True
-    return False
-
-
 def lambda_handler(event, context):
     event_bucket = event['Records'][0]['s3']['bucket']['name']
     event_key = event['Records'][0]['s3']['object']['key']
@@ -61,18 +46,4 @@ def lambda_handler(event, context):
                                 key_stage=key_stage_full,
                                 key_folder_id=key_folder_id)
 
-        obj_process = check_files_to_process(bucket=event_bucket,
-                                             prefix=f'{key_stage_base}/{key_model}/{key_file.split(".")[0]}/')
-
-        if obj_process:
-            TuringEMRStepJobs(cluster_name='ETL_Consolidacao_results_API-Via_Varejo',
-                              region=event_region,
-                              bucket=event_bucket,
-                              step_job_parameters={
-                                  'stage_base': key_stage_base,
-                                  'path_target': 'report/target',
-                                  'database': 'turing_prd_scoreapi_usage',
-                                  'current_date': current_date,
-                              })
-
-    return {'processed_file': {'model': key_model, 'id_folder': key_folder_id, 'file': key_file}}
+    print({'processed_file': {'model': key_model, 'id_folder': key_folder_id, 'file': key_file}})

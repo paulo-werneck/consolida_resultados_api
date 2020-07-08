@@ -39,7 +39,7 @@ def TuringEMRStepJobs(cluster_name, region, bucket, step_job_parameters):
     tags = [
         {'Key': 'Name', 'Value': cluster_name},
         {'Key': 'Customer', 'Value': nm_empresa},
-        {'Key': 'Environment', 'Value': 'PROD'},
+        {'Key': 'Environment', 'Value': 'prd'},
         {'Key': 'EMR', 'Value': 'Report'},
         {'Key': 'Product', 'Value': 'ScoreAPI'}
     ]

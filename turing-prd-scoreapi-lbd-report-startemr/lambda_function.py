@@ -7,7 +7,7 @@ current_date = datetime.today().strftime('%Y%m%d')
 def lambda_handler(event, context):
     event_region = event['region']
 
-    response = TuringEMRStepJobs(cluster_name='ETL_Consolidacao_results_API-Via_Varejo',
+    response = TuringEMRStepJobs(cluster_name='ETL - Relatorio Consolidacao API - Via Varejo',
                                  region=event_region,
                                  bucket='bkt-api-viavarejo-prd',
                                  step_job_parameters={

@@ -218,3 +218,14 @@ schema_input_file = (
     ("PERTENCE_SEG"                     ,"PERTENCE_SEG"                     ,"int"),
     ("dt_particao"                      ,"dt_particao"                      ,"bigint")
 )
+
+
+schema_output_file = (
+    ("ID_TRANSACAO", "ID_TRANSACAO", "string"),
+    ("CD_CLI",       "CD_CLI",       "bigint"),
+    ("DATA",         "DATA",         "string"),
+    ("SEGMENTO",     "SEGMENTO",     "string"),
+    ("HIST_VV",      "HIST_VV",      "double"),
+    ("SCORE",        "SCORE",        "double"),
+    ("dt_particao",  "dt_particao",  "bigint")
+)

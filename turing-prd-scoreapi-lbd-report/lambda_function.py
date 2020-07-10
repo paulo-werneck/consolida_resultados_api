@@ -1,9 +1,17 @@
 import boto3
 from datetime import datetime
 import pandas as pd
+from pytz import timezone
 
 s3 = boto3.client('s3')
-current_date = datetime.today().strftime('%Y%m%d')
+
+
+def get_file_date(bucket, key_source):
+    """ Get last modified date file """
+
+    obj = s3.get_object(Bucket=bucket, Key=key_source)
+    file_date = obj.get('LastModified').astimezone(timezone('America/Sao_Paulo'))
+    return datetime.strftime(file_date, '%Y%m%d')
 
 
 def move_files_to_stage(bucket_source, key_source, bucket_stage, key_stage):
@@ -18,12 +26,12 @@ def move_files_to_stage(bucket_source, key_source, bucket_stage, key_stage):
     )
 
 
-def insert_id_and_partition(bucket, key_stage, key_folder_id):
+def insert_id_and_partition(bucket, key_stage, key_folder_id, partition):
     """ Insert partition and id in file on /report/stage """
 
     df = pd.read_csv(f's3://{bucket}/{key_stage}')
     df.insert(0, 'id_transacao', key_folder_id)
-    df['dt_particao'] = current_date
+    df['dt_particao'] = partition
     df.to_csv(f's3://{bucket}/{key_stage}', index=False, index_label=False)
 
 
@@ -34,7 +42,8 @@ def lambda_handler(event, context):
 
     key_results_base, key_model, key_folder_id, key_file = event_key.split("/")
     key_stage_base = 'report/stage'
-    key_stage_full = f'{key_stage_base}/{key_model}/{key_file.split(".")[0]}/{current_date}/{key_folder_id}_{key_file}'
+    key_stage_full = f'{key_stage_base}/{key_model}/{key_file.split(".")[0]}/' \
+                     f'{get_file_date(event_bucket, event_key)}/{key_folder_id}_{key_file}'
 
     if 'input.csv' in event_key or 'output.csv' in event_key:
         move_files_to_stage(bucket_source=event_bucket,
@@ -44,6 +53,7 @@ def lambda_handler(event, context):
 
         insert_id_and_partition(bucket=event_bucket,
                                 key_stage=key_stage_full,
-                                key_folder_id=key_folder_id)
+                                key_folder_id=key_folder_id,
+                                partition=get_file_date(event_bucket, event_key))
 
     print({'processed_file': {'model': key_model, 'id_folder': key_folder_id, 'file': key_file}})

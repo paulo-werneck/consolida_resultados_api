@@ -4,7 +4,7 @@
 -- Desc: DDL - Tabela do AWS Athena com as respostas do dia corrente da api do modelo crediario_cdc
 ----------------------------------------------------------------------------
 
-CREATE EXTERNAL TABLE TURING_PRD_SCOREAPI_USAGE.STAGE_TB_CREDIARIO_CDC_OUTPUT
+CREATE EXTERNAL TABLE TURING_PRD_SCOREAPI_USAGE.TB_STAGE_CREDIARIO_CDC_OUTPUT
 (
 	ID_TRANSACAO    STRING,
 	CD_CLI          BIGINT,

@@ -11,7 +11,10 @@ def get_file_date(bucket, key_source):
 
     obj = s3.get_object(Bucket=bucket, Key=key_source)
     file_date = obj.get('LastModified').astimezone(timezone('America/Sao_Paulo'))
-    return datetime.strftime(file_date, '%Y%m%d')
+    return (
+        datetime.strftime(file_date, '%Y-%m-%d'),
+        datetime.strftime(file_date, '%Y-%m-%d %H:%M:%S')
+    )
 
 
 def move_files_to_stage(bucket_source, key_source, bucket_stage, key_stage):
@@ -26,12 +29,17 @@ def move_files_to_stage(bucket_source, key_source, bucket_stage, key_stage):
     )
 
 
-def insert_id_and_partition(bucket, key_stage, key_folder_id, partition):
-    """ Insert partition and id in file on /report/stage """
+def insert_fields_dataset(bucket, key_stage, **kwfields):
+    """ Insert new fields in file on /report/stage """
 
     df = pd.read_csv(f's3://{bucket}/{key_stage}')
-    df.insert(0, 'id_transacao', key_folder_id)
-    df['dt_particao'] = partition
+
+    for field, value in kwfields.items():
+        if field == 'id_transacao':
+            df.insert(0, field, value)
+        else:
+            df[field] = value
+
     df.to_csv(f's3://{bucket}/{key_stage}', index=False, index_label=False)
 
 
@@ -42,8 +50,9 @@ def lambda_handler(event, context):
 
     key_results_base, key_model, key_folder_id, key_file = event_key.split("/")
     key_stage_base = 'report/stage'
+    date_partition, date_time = get_file_date(event_bucket, event_key)
     key_stage_full = f'{key_stage_base}/{key_model}/{key_file.split(".")[0]}/' \
-                     f'{get_file_date(event_bucket, event_key)}/{key_folder_id}_{key_file}'
+                     f'{date_partition}/{key_folder_id}_{key_file}'
 
     if 'input.csv' in event_key or 'output.csv' in event_key:
         move_files_to_stage(bucket_source=event_bucket,
@@ -51,9 +60,11 @@ def lambda_handler(event, context):
                             bucket_stage=event_bucket,
                             key_stage=key_stage_full)
 
-        insert_id_and_partition(bucket=event_bucket,
-                                key_stage=key_stage_full,
-                                key_folder_id=key_folder_id,
-                                partition=get_file_date(event_bucket, event_key))
+        insert_fields_dataset(bucket=event_bucket,
+                              key_stage=key_stage_full,
+                              id_transacao=key_folder_id,
+                              dth_ingestao_arquivo=date_time,
+                              dt_particao=date_partition
+                              )
 
     print({'processed_file': {'model': key_model, 'id_folder': key_folder_id, 'file': key_file}})

@@ -36,7 +36,7 @@ Resources:
         - python3.8
       Content:
         S3Bucket: !Ref pBucketName
-        S3Key: setup/consolidacao_results_api/lambda/dependencies_lambda-get-results-api.zip
+        S3Key: setup/consolidacao_results_api/lambda/dependencies_turing-prd-scoreapi-lbd-report.zip
       Description: !Sub Dependencies for ${pFunctionName}
       LayerName: !Ref pLayerName
   # create lambda function
@@ -45,7 +45,7 @@ Resources:
     Properties:
       Code:
         S3Bucket: !Ref pBucketName
-        S3Key: setup/consolidacao_results_api/lambda/lambda_get_results_api.zip
+        S3Key: setup/consolidacao_results_api/lambda/turing-prd-scoreapi-lbd-report.zip
       Description: Function to consolidate API requests / returns
       FunctionName: !Ref pFunctionName
       Handler: lambda_function.lambda_handler

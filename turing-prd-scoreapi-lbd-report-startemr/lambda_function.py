@@ -1,7 +1,7 @@
 from start_emr import TuringEMRStepJobs
 from datetime import datetime
 
-current_date = datetime.today().strftime('%Y%m%d')
+current_date = datetime.today().strftime('%Y-%m-%d')
 
 
 def lambda_handler(event, context):

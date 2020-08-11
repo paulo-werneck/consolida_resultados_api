@@ -6,13 +6,14 @@
 
 CREATE EXTERNAL TABLE TURING_PRD_SCOREAPI_USAGE.TB_CREDIARIO_CDC_OUTPUT
 (
-	ID_TRANSACAO    STRING,
-	CD_CLI          BIGINT,
-	DATA            STRING,
-	SEGMENTO        STRING,
-	HIST_VV         DOUBLE,
-	SCORE           DOUBLE
+	ID_TRANSACAO            STRING,
+	CD_CLI                  BIGINT,
+	DATA                    STRING,
+	SEGMENTO                STRING,
+	HIST_VV                 DOUBLE,
+	SCORE                   DOUBLE,
+	DTH_INGESTAO_ARQUIVO    TIMESTAMP
 )
-PARTITIONED BY (dt_particao bigint)
+PARTITIONED BY (dt_particao date)
 STORED AS PARQUET
 LOCATION 's3://bkt-api-viavarejo-prd/report/target/turing_prd_scoreapi_usage/tb_crediario_cdc_output/';

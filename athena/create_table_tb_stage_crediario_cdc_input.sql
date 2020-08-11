@@ -223,7 +223,8 @@ CREATE EXTERNAL TABLE TURING_PRD_SCOREAPI_USAGE.TB_STAGE_CREDIARIO_CDC_INPUT
     CONT_HISTORICO_LONGO                INT,
     TEMPO_SHIST                         STRING,
     PERTENCE_SEG                        INT,
-    DT_PARTICAO                         BIGINT
+    DTH_INGESTAO_ARQUIVO                TIMESTAMP,
+    DT_PARTICAO                         DATE
 )
 ROW FORMAT DELIMITED
 FIELDS TERMINATED BY ','

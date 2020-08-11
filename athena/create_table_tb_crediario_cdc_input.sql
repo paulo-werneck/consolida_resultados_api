@@ -222,8 +222,9 @@ CREATE EXTERNAL TABLE TURING_PRD_SCOREAPI_USAGE.TB_CREDIARIO_CDC_INPUT
     CONT_HISTORICO_CURTO                INT,
     CONT_HISTORICO_LONGO                INT,
     TEMPO_SHIST                         STRING,
-    PERTENCE_SEG                        INT
+    PERTENCE_SEG                        INT,
+    DTH_INGESTAO_ARQUIVO                TIMESTAMP
 )
-PARTITIONED BY (dt_particao bigint)
+PARTITIONED BY (dt_particao date)
 STORED AS PARQUET
 LOCATION 's3://bkt-api-viavarejo-prd/report/target/turing_prd_scoreapi_usage/tb_crediario_cdc_input/';

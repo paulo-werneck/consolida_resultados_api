@@ -216,7 +216,8 @@ schema_input_file = (
     ("CONT_HISTORICO_LONGO"             ,"CONT_HISTORICO_LONGO"             ,"int"),
     ("TEMPO_SHIST"                      ,"TEMPO_SHIST"                      ,"string"),
     ("PERTENCE_SEG"                     ,"PERTENCE_SEG"                     ,"int"),
-    ("dt_particao"                      ,"dt_particao"                      ,"bigint")
+    ("DTH_INGESTAO_ARQUIVO",        "DTH_INGESTAO_ARQUIVO",        "timestamp"),
+    ("dt_particao"                      ,"dt_particao"                      ,"date")
 )
 
 
@@ -227,5 +228,6 @@ schema_output_file = (
     ("SEGMENTO",     "SEGMENTO",     "string"),
     ("HIST_VV",      "HIST_VV",      "double"),
     ("SCORE",        "SCORE",        "double"),
-    ("dt_particao",  "dt_particao",  "bigint")
+    ("DTH_INGESTAO_ARQUIVO",        "DTH_INGESTAO_ARQUIVO",        "timestamp"),
+    ("dt_particao",  "dt_particao",  "date")
 )

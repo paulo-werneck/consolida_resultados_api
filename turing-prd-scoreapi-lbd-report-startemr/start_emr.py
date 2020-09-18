@@ -15,23 +15,19 @@ EmrManagedSlaveSecurityGroup = 'sg-075116996dce92d77'
 # -----------------------------------------------
 
 
-def TuringEMRStepJobs(cluster_name, region, bucket, step_job_parameters):
+def TuringEMRStepJobs(cluster_name, region, bucket, parameters_step_jobs):
     conn_emr = boto3.client('emr', region)
 
     release_label = 'emr-5.23.0'
     log_uri = f's3://{bucket}/logs/EMR/clusters/'
 
-    path_code_stepjob = f'file:///tmp/emr_step_job/step_job01_etl_consolidacao_api.py'
-
     steps = [
         {
-            'Name': 'spark - ETL Consolidacao requisicoes score API',
+            'Name': 'Shell - Configura steps - spark-submit',
             'ActionOnFailure': 'CONTINUE',
             'HadoopJarStep': {
-                'Jar': 'command-runner.jar',
-                'Args': ['spark-submit', '--deploy-mode', 'client', '--supervise', '--conf',
-                         'spark.pyspark.python=/usr/bin/python3.6', path_code_stepjob,
-                         bucket, *step_job_parameters.values()]
+                'Jar': 's3://sa-east-1.elasticmapreduce/libs/script-runner/script-runner.jar',
+                'Args': [f's3://{bucket}/setup/report/emr/config_cluster_start.sh', bucket, *parameters_step_jobs.values()]
             }
         }
     ]
@@ -111,17 +107,7 @@ def TuringEMRStepJobs(cluster_name, region, bucket, step_job_parameters):
         }
     ]
 
-    bootstrap_actions = [
-        {
-            'Name': 'Pacotes Python',
-            'ScriptBootstrapAction':
-                {
-                    'Path': f's3://{bucket}/setup/report/emr/config_cluster_start.sh'
-                }
-        }
-    ]
-
-    applications = [{'Name': x} for x in ['Hadoop', 'Spark', 'Ganglia', 'Hive', 'JupyterHub']]
+    applications = [{'Name': x} for x in ['Hadoop', 'Spark', 'Ganglia', 'Hive']]
     service_role = 'EMR_DefaultRole'
     job_flow_role = 'EMR_EC2_DefaultRole'
 
@@ -130,7 +116,6 @@ def TuringEMRStepJobs(cluster_name, region, bucket, step_job_parameters):
         LogUri=log_uri,
         ReleaseLabel=release_label,
         Instances=instances,
-        BootstrapActions=bootstrap_actions,
         Tags=tags,
         Steps=steps,
         Configurations=configurations,

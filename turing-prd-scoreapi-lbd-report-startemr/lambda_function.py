@@ -10,10 +10,9 @@ def lambda_handler(event, context):
     response = TuringEMRStepJobs(cluster_name='ETL - Relatorio Consolidacao API - Via Varejo',
                                  region=event_region,
                                  bucket='bkt-api-viavarejo-prd',
-                                 step_job_parameters={
-                                     'stage_base': 'report/stage',
-                                     'path_target': 'report/target',
-                                     'database': 'turing_prd_scoreapi_usage',
-                                     'current_date': current_date,
+                                 parameters_step_jobs={
+                                     'path_base_stage': 'report/stage',
+                                     'path_base_target': 'report/target',
+                                     'path_base_setup': 'setup/report'
                                  })
     print(response)

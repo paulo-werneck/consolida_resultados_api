@@ -1,0 +1,1104 @@
+{
+  "metadata": {
+    "customer": "via varejo",
+    "database": "turing_prd_scoreapi_usage",
+    "table": "tb_crediario_cdc_input"
+  },
+  "fields": [
+      {
+        "name": "ID_TRANSACAO",
+        "alias": "ID_TRANSACAO",
+        "type": "string"
+      },
+      {
+        "name": "ID",
+        "alias": "ID",
+        "type": "int"
+      },
+      {
+        "name": "DATA_CADASTRO",
+        "alias": "DATA_CADASTRO",
+        "type": "string"
+      },
+      {
+        "name": "DATA_NASCIMENTO",
+        "alias": "DATA_NASCIMENTO",
+        "type": "string"
+      },
+      {
+        "name": "CEP",
+        "alias": "CEP",
+        "type": "int"
+      },
+      {
+        "name": "SEXO",
+        "alias": "SEXO",
+        "type": "string"
+      },
+      {
+        "name": "CD_CRD_PON_DIA",
+        "alias": "CD_CRD_PON_DIA",
+        "type": "int"
+      },
+      {
+        "name": "CD_CRD_PON_A15",
+        "alias": "CD_CRD_PON_A15",
+        "type": "int"
+      },
+      {
+        "name": "CD_CRD_PON_A30",
+        "alias": "CD_CRD_PON_A30",
+        "type": "int"
+      },
+      {
+        "name": "CD_CRD_PON_A45",
+        "alias": "CD_CRD_PON_A45",
+        "type": "int"
+      },
+      {
+        "name": "CD_CRD_PON_A60",
+        "alias": "CD_CRD_PON_A60",
+        "type": "int"
+      },
+      {
+        "name": "CD_CRD_PON_A90",
+        "alias": "CD_CRD_PON_A90",
+        "type": "int"
+      },
+      {
+        "name": "CD_CRD_PON_M90",
+        "alias": "CD_CRD_PON_M90",
+        "type": "int"
+      },
+      {
+        "name": "QT_CRD_ACO",
+        "alias": "QT_CRD_ACO",
+        "type": "int"
+      },
+      {
+        "name": "QT_CRD_ANI",
+        "alias": "QT_CRD_ANI",
+        "type": "int"
+      },
+      {
+        "name": "QT_CRD_ANI_PRL",
+        "alias": "QT_CRD_ANI_PRL",
+        "type": "int"
+      },
+      {
+        "name": "VC",
+        "alias": "VC",
+        "type": "int"
+      },
+      {
+        "name": "VV",
+        "alias": "VV",
+        "type": "int"
+      },
+      {
+        "name": "UF_FILIAL",
+        "alias": "UF_FILIAL",
+        "type": "string"
+      },
+      {
+        "name": "SEGMENTO",
+        "alias": "SEGMENTO",
+        "type": "int"
+      },
+      {
+        "name": "SCORE_VV_2018",
+        "alias": "SCORE_VV_2018",
+        "type": "int"
+      },
+      {
+        "name": "PERC_AC15",
+        "alias": "PERC_AC15",
+        "type": "float"
+      },
+      {
+        "name": "PERC_AC30",
+        "alias": "PERC_AC30",
+        "type": "float"
+      },
+      {
+        "name": "PERC_AC45",
+        "alias": "PERC_AC45",
+        "type": "float"
+      },
+      {
+        "name": "PERC_AC60",
+        "alias": "PERC_AC60",
+        "type": "float"
+      },
+      {
+        "name": "PERC_AC90",
+        "alias": "PERC_AC90",
+        "type": "float"
+      },
+      {
+        "name": "PERC_PARCELAS_DIA",
+        "alias": "PERC_PARCELAS_DIA",
+        "type": "float"
+      },
+      {
+        "name": "ANISTIA_EVER",
+        "alias": "ANISTIA_EVER",
+        "type": "int"
+      },
+      {
+        "name": "ACORDO_EVER",
+        "alias": "ACORDO_EVER",
+        "type": "int"
+      },
+      {
+        "name": "ACORDO_AN_EVER",
+        "alias": "ACORDO_AN_EVER",
+        "type": "int"
+      },
+      {
+        "name": "FILIAL",
+        "alias": "ID_FILIAL",
+        "type": "int"
+      },
+      {
+        "name": "CLI_TIPO",
+        "alias": "CLI_TIPO",
+        "type": "int"
+      },
+      {
+        "name": "MOTIVO_M",
+        "alias": "MOTIVO_M",
+        "type": "boolean"
+      },
+      {
+        "name": "DATREF_ABT",
+        "alias": "DATREF_ABT",
+        "type": "int"
+      },
+      {
+        "name": "DATREF_ABT_PARTITION",
+        "alias": "DATREF_ABT_PARTITION",
+        "type": "int"
+      },
+      {
+        "name": "DTH_PROC_CARGA",
+        "alias": "DTH_PROC_CARGA",
+        "type": "bigint"
+      },
+      {
+        "name": "DTH_PROC_CARGA_PARTITION",
+        "alias": "DTH_PROC_CARGA_PARTITION",
+        "type": "bigint"
+      },
+      {
+        "name": "CD_CLI_FINAL",
+        "alias": "CD_CLI_FINAL",
+        "type": "bigint"
+      },
+      {
+        "name": "DATREF_VAV",
+        "alias": "DATREF_VAV",
+        "type": "int"
+      },
+      {
+        "name": "DTH_PROC_CARGA_VAV",
+        "alias": "DTH_PROC_CARGA_VAV",
+        "type": "bigint"
+      },
+      {
+        "name": "CD_CLI_VAV",
+        "alias": "CD_CLI_VAV",
+        "type": "bigint"
+      },
+      {
+        "name": "FLAG_PAG_CARTAO_15M",
+        "alias": "FLAG_PAG_CARTAO_15M",
+        "type": "int"
+      },
+      {
+        "name": "FLAG_PAG_VV_15M",
+        "alias": "FLAG_PAG_VV_15M",
+        "type": "int"
+      },
+      {
+        "name": "FLAG_PAG_OUTRAS_15M",
+        "alias": "FLAG_PAG_OUTRAS_15M",
+        "type": "int"
+      },
+      {
+        "name": "QT_MESES_COMPROU_CC_12M",
+        "alias": "QT_MESES_COMPROU_CC_12M",
+        "type": "bigint"
+      },
+      {
+        "name": "QT_MESES_COMPROU_CC_15M",
+        "alias": "QT_MESES_COMPROU_CC_15M",
+        "type": "bigint"
+      },
+      {
+        "name": "QT_COMPRA_DIN_9M",
+        "alias": "QT_COMPRA_DIN_9M",
+        "type": "bigint"
+      },
+      {
+        "name": "QT_COMPRA_DIN_15M",
+        "alias": "QT_COMPRA_DIN_15M",
+        "type": "bigint"
+      },
+      {
+        "name": "QT_COMPRA_3M_VV",
+        "alias": "QT_COMPRA_3M_VV",
+        "type": "bigint"
+      },
+      {
+        "name": "QT_COMPRA_6M_VV",
+        "alias": "QT_COMPRA_6M_VV",
+        "type": "bigint"
+      },
+      {
+        "name": "QT_COMPRA_12M_VV",
+        "alias": "QT_COMPRA_12M_VV",
+        "type": "bigint"
+      },
+      {
+        "name": "QT_COMPRA_15M_VV",
+        "alias": "QT_COMPRA_15M_VV",
+        "type": "bigint"
+      },
+      {
+        "name": "QT_COMPRA_SERV_3M",
+        "alias": "QT_COMPRA_SERV_3M",
+        "type": "bigint"
+      },
+      {
+        "name": "QT_COMPRA_SERV_6M",
+        "alias": "QT_COMPRA_SERV_6M",
+        "type": "bigint"
+      },
+      {
+        "name": "QT_COMPRA_SERV_9M",
+        "alias": "QT_COMPRA_SERV_9M",
+        "type": "bigint"
+      },
+      {
+        "name": "QT_COMPRA_CC_3M",
+        "alias": "QT_COMPRA_CC_3M",
+        "type": "bigint"
+      },
+      {
+        "name": "QT_COMPRA_CC_6M",
+        "alias": "QT_COMPRA_CC_6M",
+        "type": "bigint"
+      },
+      {
+        "name": "TOTAL_ITENS_6M",
+        "alias": "TOTAL_ITENS_6M",
+        "type": "bigint"
+      },
+      {
+        "name": "TOTAL_ITENS_12M",
+        "alias": "TOTAL_ITENS_12M",
+        "type": "bigint"
+      },
+      {
+        "name": "TOTAL_ITENS_15M",
+        "alias": "TOTAL_ITENS_15M",
+        "type": "bigint"
+      },
+      {
+        "name": "QT_ITENS_DIF_12M",
+        "alias": "QT_ITENS_DIF_12M",
+        "type": "bigint"
+      },
+      {
+        "name": "QT_ITENS_DIF_15M",
+        "alias": "QT_ITENS_DIF_15M",
+        "type": "bigint"
+      },
+      {
+        "name": "MED_PLANO_CC_3M",
+        "alias": "MED_PLANO_CC_3M",
+        "type": "float"
+      },
+      {
+        "name": "MED_PLANO_CC_6M",
+        "alias": "MED_PLANO_CC_6M",
+        "type": "float"
+      },
+      {
+        "name": "MED_PLANO_CC_9M",
+        "alias": "MED_PLANO_CC_9M",
+        "type": "float"
+      },
+      {
+        "name": "MED_PLANO_CC_12M",
+        "alias": "MED_PLANO_CC_12M",
+        "type": "float"
+      },
+      {
+        "name": "MED_PLANO_CC_15M",
+        "alias": "MED_PLANO_CC_15M",
+        "type": "float"
+      },
+      {
+        "name": "MAX_PLANO_CC_3M",
+        "alias": "MAX_PLANO_CC_3M",
+        "type": "float"
+      },
+      {
+        "name": "MAX_PLANO_CC_6M",
+        "alias": "MAX_PLANO_CC_6M",
+        "type": "float"
+      },
+      {
+        "name": "MAX_PLANO_CC_12M",
+        "alias": "MAX_PLANO_CC_12M",
+        "type": "float"
+      },
+      {
+        "name": "MAX_PLANO_CC_15M",
+        "alias": "MAX_PLANO_CC_15M",
+        "type": "float"
+      },
+      {
+        "name": "QT_COMPRA_MERC_12M",
+        "alias": "QT_COMPRA_MERC_12M",
+        "type": "bigint"
+      },
+      {
+        "name": "QT_COMPRA_MERC_15M",
+        "alias": "QT_COMPRA_MERC_15M",
+        "type": "bigint"
+      },
+      {
+        "name": "QT_FORMA_PGT_12M",
+        "alias": "QT_FORMA_PGT_12M",
+        "type": "int"
+      },
+      {
+        "name": "QT_FORMA_PGT_15M",
+        "alias": "QT_FORMA_PGT_15M",
+        "type": "int"
+      },
+      {
+        "name": "FLAG_COMPRA_VV_1",
+        "alias": "FLAG_COMPRA_VV_1",
+        "type": "int"
+      },
+      {
+        "name": "FLAG_COMPRA_VV_2",
+        "alias": "FLAG_COMPRA_VV_2",
+        "type": "int"
+      },
+      {
+        "name": "FLAG_COMPRA_VV_3",
+        "alias": "FLAG_COMPRA_VV_3",
+        "type": "int"
+      },
+      {
+        "name": "FLAG_COMPRA_VV_4",
+        "alias": "FLAG_COMPRA_VV_4",
+        "type": "int"
+      },
+      {
+        "name": "FLAG_COMPRA_VV_5",
+        "alias": "FLAG_COMPRA_VV_5",
+        "type": "int"
+      },
+      {
+        "name": "FLAG_COMPRA_VV_6",
+        "alias": "FLAG_COMPRA_VV_6",
+        "type": "int"
+      },
+      {
+        "name": "FLAG_COMPRA_VV_7",
+        "alias": "FLAG_COMPRA_VV_7",
+        "type": "int"
+      },
+      {
+        "name": "FLAG_COMPRA_VV_8",
+        "alias": "FLAG_COMPRA_VV_8",
+        "type": "int"
+      },
+      {
+        "name": "FLAG_COMPRA_VV_9",
+        "alias": "FLAG_COMPRA_VV_9",
+        "type": "int"
+      },
+      {
+        "name": "FLAG_COMPRA_VV_10",
+        "alias": "FLAG_COMPRA_VV_10",
+        "type": "int"
+      },
+      {
+        "name": "FLAG_COMPRA_VV_11",
+        "alias": "FLAG_COMPRA_VV_11",
+        "type": "int"
+      },
+      {
+        "name": "FLAG_COMPRA_VV_12",
+        "alias": "FLAG_COMPRA_VV_12",
+        "type": "int"
+      },
+      {
+        "name": "FLAG_COMPRA_VV_13",
+        "alias": "FLAG_COMPRA_VV_13",
+        "type": "int"
+      },
+      {
+        "name": "FLAG_COMPRA_VV_14",
+        "alias": "FLAG_COMPRA_VV_14",
+        "type": "int"
+      },
+      {
+        "name": "FLAG_COMPRA_VV_15",
+        "alias": "FLAG_COMPRA_VV_15",
+        "type": "int"
+      },
+      {
+        "name": "PERC_COMPRA_MERC_3M",
+        "alias": "PERC_COMPRA_MERC_3M",
+        "type": "float"
+      },
+      {
+        "name": "PERC_COMPRA_MERC_6M",
+        "alias": "PERC_COMPRA_MERC_6M",
+        "type": "float"
+      },
+      {
+        "name": "PERC_COMPRA_MERC_12M",
+        "alias": "PERC_COMPRA_MERC_12M",
+        "type": "float"
+      },
+      {
+        "name": "PERC_COMPRA_MERC_15M",
+        "alias": "PERC_COMPRA_MERC_15M",
+        "type": "float"
+      },
+      {
+        "name": "MAX_PERCSALMIN_VLCOMPRA_CC9M",
+        "alias": "MAX_PERCSALMIN_VLCOMPRA_CC9M",
+        "type": "float"
+      },
+      {
+        "name": "MAX_PERCSALMIN_VLCOMPRA_DD12M",
+        "alias": "MAX_PERCSALMIN_VLCOMPRA_DD12M",
+        "type": "float"
+      },
+      {
+        "name": "MAX_PERCSALMIN_VLCOMPRA_DD15M",
+        "alias": "MAX_PERCSALMIN_VLCOMPRA_DD15M",
+        "type": "float"
+      },
+      {
+        "name": "MAX_PERCSALMIN_VLCOMPRA6M",
+        "alias": "MAX_PERCSALMIN_VLCOMPRA6M",
+        "type": "float"
+      },
+      {
+        "name": "MAX_PERCSALMIN_VLCOMPRA12M",
+        "alias": "MAX_PERCSALMIN_VLCOMPRA12M",
+        "type": "float"
+      },
+      {
+        "name": "MAX_PERCSALMIN_VLCOMPRA15M",
+        "alias": "MAX_PERCSALMIN_VLCOMPRA15M",
+        "type": "float"
+      },
+      {
+        "name": "MAX_PERCSALMIN_VLPARC15M",
+        "alias": "MAX_PERCSALMIN_VLPARC15M",
+        "type": "float"
+      },
+      {
+        "name": "MED_PERCSALMIN_VLCOMPRA_CC3M",
+        "alias": "MED_PERCSALMIN_VLCOMPRA_CC3M",
+        "type": "float"
+      },
+      {
+        "name": "MED_PERCSALMIN_VLCOMPRA_CC12M",
+        "alias": "MED_PERCSALMIN_VLCOMPRA_CC12M",
+        "type": "float"
+      },
+      {
+        "name": "MED_PERCSALMIN_VLCOMPRA_DD12M",
+        "alias": "MED_PERCSALMIN_VLCOMPRA_DD12M",
+        "type": "float"
+      },
+      {
+        "name": "MED_PERCSALMIN_VLCOMPRA3M",
+        "alias": "MED_PERCSALMIN_VLCOMPRA3M",
+        "type": "float"
+      },
+      {
+        "name": "MED_PERCSALMIN_VLCOMPRA12M",
+        "alias": "MED_PERCSALMIN_VLCOMPRA12M",
+        "type": "float"
+      },
+      {
+        "name": "MED_PERCSALMIN_VLCOMPRA15M",
+        "alias": "MED_PERCSALMIN_VLCOMPRA15M",
+        "type": "float"
+      },
+      {
+        "name": "PERC_COMPRA_SERV_3M",
+        "alias": "PERC_COMPRA_SERV_3M",
+        "type": "float"
+      },
+      {
+        "name": "PERC_COMPRA_SERV_6M",
+        "alias": "PERC_COMPRA_SERV_6M",
+        "type": "float"
+      },
+      {
+        "name": "PERC_VLCOMPRA_MERC_3M",
+        "alias": "PERC_VLCOMPRA_MERC_3M",
+        "type": "float"
+      },
+      {
+        "name": "PERC_VLCOMPRA_MERC_6M",
+        "alias": "PERC_VLCOMPRA_MERC_6M",
+        "type": "float"
+      },
+      {
+        "name": "PERC_VLCOMPRA_MERC_9M",
+        "alias": "PERC_VLCOMPRA_MERC_9M",
+        "type": "float"
+      },
+      {
+        "name": "PERC_VLCOMPRA_MERC_12M",
+        "alias": "PERC_VLCOMPRA_MERC_12M",
+        "type": "float"
+      },
+      {
+        "name": "PERC_VLCOMPRA_MERC_15M",
+        "alias": "PERC_VLCOMPRA_MERC_15M",
+        "type": "float"
+      },
+      {
+        "name": "PERC_VLCOMPRA_SERV_3M",
+        "alias": "PERC_VLCOMPRA_SERV_3M",
+        "type": "float"
+      },
+      {
+        "name": "PERC_VLCOMPRA_SERV_6M",
+        "alias": "PERC_VLCOMPRA_SERV_6M",
+        "type": "float"
+      },
+      {
+        "name": "PERC_VLCOMPRA_SERV_9M",
+        "alias": "PERC_VLCOMPRA_SERV_9M",
+        "type": "float"
+      },
+      {
+        "name": "PERC_VLCOMPRA_SERV_12M",
+        "alias": "PERC_VLCOMPRA_SERV_12M",
+        "type": "float"
+      },
+      {
+        "name": "PERC_VLPAG_CC_12M",
+        "alias": "PERC_VLPAG_CC_12M",
+        "type": "float"
+      },
+      {
+        "name": "PERC_VLPAG_CC_15M",
+        "alias": "PERC_VLPAG_CC_15M",
+        "type": "float"
+      },
+      {
+        "name": "PERC_VLPAG_DD_9M",
+        "alias": "PERC_VLPAG_DD_9M",
+        "type": "float"
+      },
+      {
+        "name": "PERC_VLPAG_DD_12M",
+        "alias": "PERC_VLPAG_DD_12M",
+        "type": "float"
+      },
+      {
+        "name": "PERC_VLPAG_DD_15M",
+        "alias": "PERC_VLPAG_DD_15M",
+        "type": "float"
+      },
+      {
+        "name": "PERCSALMIN_TOT_PAG12M",
+        "alias": "PERCSALMIN_TOT_PAG12M",
+        "type": "float"
+      },
+      {
+        "name": "PERCSALMIN_TOT_PAG15M",
+        "alias": "PERCSALMIN_TOT_PAG15M",
+        "type": "float"
+      },
+      {
+        "name": "VALORT_PG_CC_1",
+        "alias": "VALORT_PG_CC_1",
+        "type": "float"
+      },
+      {
+        "name": "VALORT_PG_CC_2",
+        "alias": "VALORT_PG_CC_2",
+        "type": "float"
+      },
+      {
+        "name": "VALORT_PG_CC_3",
+        "alias": "VALORT_PG_CC_3",
+        "type": "float"
+      },
+      {
+        "name": "VALORT_PG_CC_4",
+        "alias": "VALORT_PG_CC_4",
+        "type": "float"
+      },
+      {
+        "name": "VALORT_PG_CC_5",
+        "alias": "VALORT_PG_CC_5",
+        "type": "float"
+      },
+      {
+        "name": "VALORT_PG_CC_6",
+        "alias": "VALORT_PG_CC_6",
+        "type": "float"
+      },
+      {
+        "name": "VALORT_PG_CC_7",
+        "alias": "VALORT_PG_CC_7",
+        "type": "float"
+      },
+      {
+        "name": "VALORT_PG_CC_8",
+        "alias": "VALORT_PG_CC_8",
+        "type": "float"
+      },
+      {
+        "name": "VALORT_PG_CC_9",
+        "alias": "VALORT_PG_CC_9",
+        "type": "float"
+      },
+      {
+        "name": "VALORT_PG_CC_10",
+        "alias": "VALORT_PG_CC_10",
+        "type": "float"
+      },
+      {
+        "name": "VALORT_PG_CC_11",
+        "alias": "VALORT_PG_CC_11",
+        "type": "float"
+      },
+      {
+        "name": "VALORT_PG_CC_12",
+        "alias": "VALORT_PG_CC_12",
+        "type": "float"
+      },
+      {
+        "name": "VALORT_PG_CC_13",
+        "alias": "VALORT_PG_CC_13",
+        "type": "float"
+      },
+      {
+        "name": "VALORT_PG_CC_14",
+        "alias": "VALORT_PG_CC_14",
+        "type": "float"
+      },
+      {
+        "name": "VALORT_PG_CC_15",
+        "alias": "VALORT_PG_CC_15",
+        "type": "float"
+      },
+      {
+        "name": "VALOR_PARC_CC_1",
+        "alias": "VALOR_PARC_CC_1",
+        "type": "float"
+      },
+      {
+        "name": "VALOR_PARC_CC_2",
+        "alias": "VALOR_PARC_CC_2",
+        "type": "float"
+      },
+      {
+        "name": "VALOR_PARC_CC_3",
+        "alias": "VALOR_PARC_CC_3",
+        "type": "float"
+      },
+      {
+        "name": "VALOR_PARC_CC_4",
+        "alias": "VALOR_PARC_CC_4",
+        "type": "float"
+      },
+      {
+        "name": "VALOR_PARC_CC_5",
+        "alias": "VALOR_PARC_CC_5",
+        "type": "float"
+      },
+      {
+        "name": "VALOR_PARC_CC_6",
+        "alias": "VALOR_PARC_CC_6",
+        "type": "float"
+      },
+      {
+        "name": "VALOR_PARC_CC_7",
+        "alias": "VALOR_PARC_CC_7",
+        "type": "float"
+      },
+      {
+        "name": "VALOR_PARC_CC_8",
+        "alias": "VALOR_PARC_CC_8",
+        "type": "float"
+      },
+      {
+        "name": "VALOR_PARC_CC_9",
+        "alias": "VALOR_PARC_CC_9",
+        "type": "float"
+      },
+      {
+        "name": "VALOR_PARC_CC_10",
+        "alias": "VALOR_PARC_CC_10",
+        "type": "float"
+      },
+      {
+        "name": "VALOR_PARC_CC_11",
+        "alias": "VALOR_PARC_CC_11",
+        "type": "float"
+      },
+      {
+        "name": "VALOR_PARC_CC_12",
+        "alias": "VALOR_PARC_CC_12",
+        "type": "float"
+      },
+      {
+        "name": "VALOR_PARC_CC_13",
+        "alias": "VALOR_PARC_CC_13",
+        "type": "float"
+      },
+      {
+        "name": "VALOR_PARC_CC_14",
+        "alias": "VALOR_PARC_CC_14",
+        "type": "float"
+      },
+      {
+        "name": "VALOR_PARC_CC_15",
+        "alias": "VALOR_PARC_CC_15",
+        "type": "float"
+      },
+      {
+        "name": "SALARIOMINIMO_1",
+        "alias": "SALARIOMINIMO_1",
+        "type": "bigint"
+      },
+      {
+        "name": "SALARIOMINIMO_2",
+        "alias": "SALARIOMINIMO_2",
+        "type": "bigint"
+      },
+      {
+        "name": "SALARIOMINIMO_3",
+        "alias": "SALARIOMINIMO_3",
+        "type": "bigint"
+      },
+      {
+        "name": "SALARIOMINIMO_4",
+        "alias": "SALARIOMINIMO_4",
+        "type": "bigint"
+      },
+      {
+        "name": "SALARIOMINIMO_5",
+        "alias": "SALARIOMINIMO_5",
+        "type": "bigint"
+      },
+      {
+        "name": "SALARIOMINIMO_6",
+        "alias": "SALARIOMINIMO_6",
+        "type": "bigint"
+      },
+      {
+        "name": "SALARIOMINIMO_7",
+        "alias": "SALARIOMINIMO_7",
+        "type": "bigint"
+      },
+      {
+        "name": "SALARIOMINIMO_8",
+        "alias": "SALARIOMINIMO_8",
+        "type": "bigint"
+      },
+      {
+        "name": "SALARIOMINIMO_9",
+        "alias": "SALARIOMINIMO_9",
+        "type": "bigint"
+      },
+      {
+        "name": "SALARIOMINIMO_10",
+        "alias": "SALARIOMINIMO_10",
+        "type": "bigint"
+      },
+      {
+        "name": "SALARIOMINIMO_11",
+        "alias": "SALARIOMINIMO_11",
+        "type": "bigint"
+      },
+      {
+        "name": "SALARIOMINIMO_12",
+        "alias": "SALARIOMINIMO_12",
+        "type": "bigint"
+      },
+      {
+        "name": "SALARIOMINIMO_13",
+        "alias": "SALARIOMINIMO_13",
+        "type": "bigint"
+      },
+      {
+        "name": "SALARIOMINIMO_14",
+        "alias": "SALARIOMINIMO_14",
+        "type": "bigint"
+      },
+      {
+        "name": "SALARIOMINIMO_15",
+        "alias": "SALARIOMINIMO_15",
+        "type": "bigint"
+      },
+      {
+        "name": "QT_COMPRAS_1",
+        "alias": "QT_COMPRAS_1",
+        "type": "bigint"
+      },
+      {
+        "name": "QT_COMPRAS_2",
+        "alias": "QT_COMPRAS_2",
+        "type": "bigint"
+      },
+      {
+        "name": "QT_COMPRAS_3",
+        "alias": "QT_COMPRAS_3",
+        "type": "bigint"
+      },
+      {
+        "name": "QT_COMPRAS_4",
+        "alias": "QT_COMPRAS_4",
+        "type": "bigint"
+      },
+      {
+        "name": "QT_COMPRAS_5",
+        "alias": "QT_COMPRAS_5",
+        "type": "bigint"
+      },
+      {
+        "name": "QT_COMPRAS_6",
+        "alias": "QT_COMPRAS_6",
+        "type": "bigint"
+      },
+      {
+        "name": "QT_COMPRAS_7",
+        "alias": "QT_COMPRAS_7",
+        "type": "bigint"
+      },
+      {
+        "name": "QT_COMPRAS_8",
+        "alias": "QT_COMPRAS_8",
+        "type": "bigint"
+      },
+      {
+        "name": "QT_COMPRAS_9",
+        "alias": "QT_COMPRAS_9",
+        "type": "bigint"
+      },
+      {
+        "name": "QT_COMPRAS_10",
+        "alias": "QT_COMPRAS_10",
+        "type": "bigint"
+      },
+      {
+        "name": "QT_COMPRAS_11",
+        "alias": "QT_COMPRAS_11",
+        "type": "bigint"
+      },
+      {
+        "name": "QT_COMPRAS_12",
+        "alias": "QT_COMPRAS_12",
+        "type": "bigint"
+      },
+      {
+        "name": "QT_COMPRAS_13",
+        "alias": "QT_COMPRAS_13",
+        "type": "bigint"
+      },
+      {
+        "name": "QT_COMPRAS_14",
+        "alias": "QT_COMPRAS_14",
+        "type": "bigint"
+      },
+      {
+        "name": "QT_COMPRAS_15",
+        "alias": "QT_COMPRAS_15",
+        "type": "bigint"
+      },
+      {
+        "name": "VL_MED_PAG_PARC_15M",
+        "alias": "VL_MED_PAG_PARC_15M",
+        "type": "float"
+      },
+      {
+        "name": "PERC_QT_CPR_VV_6M_7A9M",
+        "alias": "PERC_QT_CPR_VV_6M_7A9M",
+        "type": "float"
+      },
+      {
+        "name": "PERC_QT_CPR_VV_9M_10A12M",
+        "alias": "PERC_QT_CPR_VV_9M_10A12M",
+        "type": "float"
+      },
+      {
+        "name": "PERC_QT_CPR_VV_12M_13A15M",
+        "alias": "PERC_QT_CPR_VV_12M_13A15M",
+        "type": "float"
+      },
+      {
+        "name": "MED_PERCSALMIN_VV_VLPARC6M",
+        "alias": "MED_PERCSALMIN_VV_VLPARC6M",
+        "type": "float"
+      },
+      {
+        "name": "MED_PERCSALMIN_VV_VLPARC12M",
+        "alias": "MED_PERCSALMIN_VV_VLPARC12M",
+        "type": "float"
+      },
+      {
+        "name": "PERC_COMPRA_DIN_15M",
+        "alias": "PERC_COMPRA_DIN_15M",
+        "type": "float"
+      },
+      {
+        "name": "FORMA_PGT_12M",
+        "alias": "FORMA_PGT_12M",
+        "type": "string"
+      },
+      {
+        "name": "FORMA_PGT_15M",
+        "alias": "FORMA_PGT_15M",
+        "type": "string"
+      },
+      {
+        "name": "QT_MESES_COMPROU_VV_12M",
+        "alias": "QT_MESES_COMPROU_VV_12M",
+        "type": "int"
+      },
+      {
+        "name": "QT_MESES_COMPROU_VV_15M",
+        "alias": "QT_MESES_COMPROU_VV_15M",
+        "type": "int"
+      },
+      {
+        "name": "RECORRENCIA_VV",
+        "alias": "RECORRENCIA_VV",
+        "type": "string"
+      },
+      {
+        "name": "PERTENCE_VAV",
+        "alias": "PERTENCE_VAV",
+        "type": "int"
+      },
+      {
+        "name": "DATREF_PREJ",
+        "alias": "DATREF_PREJ",
+        "type": "int"
+      },
+      {
+        "name": "DTH_PROC_CARGA_PREJ",
+        "alias": "DTH_PROC_CARGA_PREJ",
+        "type": "bigint"
+      },
+      {
+        "name": "CD_CLI_PREJ",
+        "alias": "CD_CLI_PREJ",
+        "type": "bigint"
+      },
+      {
+        "name": "FLAG_PREJUIZO_EVER",
+        "alias": "FLAG_PREJUIZO_EVER",
+        "type": "int"
+      },
+      {
+        "name": "PERTENCE_PREJ",
+        "alias": "PERTENCE_PREJ",
+        "type": "int"
+      },
+      {
+        "name": "DATREF_ECOM",
+        "alias": "DATREF_ECOM",
+        "type": "int"
+      },
+      {
+        "name": "DTH_PROC_CARGA_ECOM",
+        "alias": "DTH_PROC_CARGA_ECOM",
+        "type": "bigint"
+      },
+      {
+        "name": "CD_CLI_ECOM",
+        "alias": "CD_CLI_ECOM",
+        "type": "bigint"
+      },
+      {
+        "name": "HIST_ONLINE24M",
+        "alias": "HIST_ONLINE24M",
+        "type": "int"
+      },
+      {
+        "name": "QT_FREQ_ONLINE_24M",
+        "alias": "QT_FREQ_ONLINE_24M",
+        "type": "bigint"
+      },
+      {
+        "name": "PERTENCE_ECOM",
+        "alias": "PERTENCE_ECOM",
+        "type": "int"
+      },
+      {
+        "name": "DATREF_SEG",
+        "alias": "DATREF_SEG",
+        "type": "int"
+      },
+      {
+        "name": "DTH_PROC_CARGA_SEG",
+        "alias": "DTH_PROC_CARGA_SEG",
+        "type": "bigint"
+      },
+      {
+        "name": "CD_CLI_SEG",
+        "alias": "CD_CLI_SEG",
+        "type": "bigint"
+      },
+      {
+        "name": "CONT_HISTORICO_ALL60",
+        "alias": "CONT_HISTORICO_ALL60",
+        "type": "int"
+      },
+      {
+        "name": "CONT_HISTORICO_CURTO",
+        "alias": "CONT_HISTORICO_CURTO",
+        "type": "int"
+      },
+      {
+        "name": "CONT_HISTORICO_LONGO",
+        "alias": "CONT_HISTORICO_LONGO",
+        "type": "int"
+      },
+      {
+        "name": "TEMPO_SHIST",
+        "alias": "TEMPO_SHIST",
+        "type": "string"
+      },
+      {
+        "name": "PERTENCE_SEG",
+        "alias": "PERTENCE_SEG",
+        "type": "int"
+      },
+      {
+        "name": "DTH_INGESTAO_ARQUIVO",
+        "alias": "DTH_INGESTAO_ARQUIVO",
+        "type": "timestamp"
+      },
+      {
+        "name": "dt_particao",
+        "alias": "dt_particao",
+        "type": "date"
+      }
+    ]
+}

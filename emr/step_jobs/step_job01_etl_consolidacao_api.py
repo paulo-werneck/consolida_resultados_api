@@ -1,86 +1,106 @@
 import boto3
 from pyspark.sql import SparkSession
-import logging
 from sys import argv
 import s3fs
-#from emr.step_jobs import schemas
-import schemas
+import json
+import re
 
 spark = SparkSession.builder.appName('ETL_Consolidacao_results_API-Via_Varejo').getOrCreate()
 s3_fs = s3fs.S3FileSystem()
 athena = boto3.client('athena')
 s3 = boto3.resource('s3')
 
-_, bucket, path_base_stage, path_base_target, database, current_date = argv
+_, path_metadata_json, bucket, path_base_stage, path_base_target, current_date = argv
 
 
-def get_files_to_process():
-    """ Get files to process in stage """
+class APIdataIngestion:
 
-    lst_files_final = list()
-    lst_files = [x for x in s3_fs.glob(f's3://{bucket}/{path_base_stage}/**')
-                 if x.endswith('/input') or x.endswith('/output')]
+    def __init__(self):
+        self.path_metadata_json = argv[1]
+        self.bucket = argv[2]
+        self.path_base_stage = argv[3]
+        self.path_base_target = argv[4]
+        self.current_date = argv[5]
+        self.database = None
+        self.table = None
+        self.fields = None
 
-    for file in lst_files:
-        for path in s3_fs.glob(f'{file}/*'):
-            if str(current_date) not in path:
-                lst_files_final.append(path)
-                logging.info(f'Partições encontradas para processamento: {path}')
-    return lst_files_final
+    def get_json_metadata(self):
+        """ Get json file with metadata to athena table """
 
+        with open(self.path_metadata_json, 'r') as f:
+            att = json.load(f)
 
-def casting_fields(data_frame, schema_casting):
-    """ casting fields of input files """
+        self.database = att.get('metadata').get('database')
+        self.table = att.get('metadata').get('table')
+        self.fields = att.get('fields')
 
-    return data_frame.select([
-        data_frame[field].cast(data_type).alias(field_alias) for field, field_alias, data_type in schema_casting
-    ])
+        if not self.table or not self.table.startswith('tb'):
+            raise Exception("Campo 'table' não informado ou fora do padrão de nomenclatura. Ex: tb_nomedomodelo")
 
+    def get_file_paths_to_process(self):
+        """ Get files to process in stage """
 
-def process_files():
-    """ Process files found in stage and ingestion it in target converted in parquet """
+        lst_paths_final = []
+        model_name = '_'.join(self.table.split('_')[1:-1])
+        type_table = self.table.split('_')[-1]
+        lst_paths = [x[0] for x in s3_fs.walk(f's3://{self.bucket}/{self.path_base_stage}/{model_name}/')]
+        for path in lst_paths:
+            if re.search("(....)-(\d\d)-(\d\d)$", path) and str(self.current_date) not in path and type_table in path:
+                lst_paths_final.append(path)
+        return lst_paths_final
 
-    lst_tables = set()
+    def casting_fields(self, data_frame, schema_casting):
+        """ casting fields of input files """
 
-    for path in get_files_to_process():
-        df = spark.read.csv(path=f's3://{path}/', header=True, inferSchema=True)
+        return data_frame.select([
+            data_frame[schema.get('name')].cast(schema.get('type')).alias(schema.get('alias'))
+            for schema in schema_casting
+        ])
 
-        if 'input' in path:
-            df = casting_fields(data_frame=df, schema_casting=schemas.schema_input_file)
-        elif 'output' in path:
-            df = casting_fields(data_frame=df, schema_casting=schemas.schema_output_file)
+    def process_files(self):
+        """ Process files found in stage and ingestion it in target converted in parquet """
 
-        table = 'tb_{model}_{file}'.format(model=path.split("/")[3], file=path.split("/")[-2])
-        lst_tables.add(table)
+        for path in self.get_file_paths_to_process():
+            df = spark.read.csv(path=f's3://{path}/', header=True, inferSchema=True)
+            df = self.casting_fields(data_frame=df, schema_casting=self.fields)
 
-        path_output = f's3://{bucket}/{path_base_target}/{database}/{table}/'
-        df.coalesce(1).write.mode("append").partitionBy("dt_particao").option("header", "true").parquet(path_output)
+            path_output = f's3://{self.bucket}/{self.path_base_target}/{self.database}/{self.table}/'
+            df.repartition(1).write.mode("append").partitionBy("dt_particao").option("header", "true").parquet(path_output)
 
-        logging.info(f'Novas partições inseridas: {path.split("/")[-1]}')
-    return lst_tables
+            print(f'Novas particoes ingeridas: {path.split("/")[-1]}')
 
+    def load_athena_partitions(self):
+        """ Load Athena table partitions """
 
-def load_athena_partitions(db_name=database, lst_tables=None):
-    """ Load Athena table partitions """
-
-    for table in lst_tables:
         athena.start_query_execution(
-            QueryString=f'MSCK REPAIR TABLE {db_name}.{table}',
-            QueryExecutionContext={'Database': db_name},
-            ResultConfiguration={'OutputLocation': f's3://{bucket}/logs/Athena/'})
-        logging.info(f'Carregadas partições do Athena na tabela: {table}')
+            QueryString=f'MSCK REPAIR TABLE {self.database}.{self.table}',
+            QueryExecutionContext={'Database': self.database},
+            ResultConfiguration={'OutputLocation': f's3://{self.bucket}/logs/Athena/'})
+        print(f'Novas particoes do Athena foram carregadas na tabela: {self.table}')
 
+    def remove_old_files_from_stage(self):
+        """ Remove processed files from stage area """
 
-def remove_old_files_from_stage():
-    """ Remove processed files from stage area """
+        s3_bucket = s3.Bucket(bucket)
+        for file in self.get_file_paths_to_process():
+            s3_bucket.objects.filter(Prefix=file.replace(self.bucket + '/', '')).delete()
+            print(f'Arquivos deletados da area de stage {file}')
 
-    s3_bucket = s3.Bucket(bucket)
-    for file in get_files_to_process():
-        s3_bucket.objects.filter(Prefix=file.replace(bucket + '/', '')).delete()
-        logging.info(f'Arquivos deletados da area de stage {file}')
+    def main(self):
+        print("Iniciando Ingestoes ...")
+        self.get_json_metadata()
+        print("Obtendo arquivos/particoes da area de stage para processamento ...")
+        print()
+        files = self.get_file_paths_to_process()
+        print("Lista de arquivos/particoes a serem processadas:")
+        for i in files:
+            print(f"- {i}")
+        self.process_files()
+        self.load_athena_partitions()
+        self.remove_old_files_from_stage()
 
 
 if __name__ == '__main__':
-    processed_files = process_files()
-    load_athena_partitions(lst_tables=processed_files)
-    remove_old_files_from_stage()
+    x = APIdataIngestion()
+    x.main()

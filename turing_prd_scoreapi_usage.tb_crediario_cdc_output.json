@@ -1,0 +1,49 @@
+{
+   "metadata": {
+      "customer":"via varejo",
+      "database":"turing_prd_scoreapi_usage",
+      "table":"tb_crediario_cdc_output"
+   },
+   "fields": [
+      {
+         "name":"ID_TRANSACAO",
+         "alias":"ID_TRANSACAO",
+         "type":"string"
+      },
+      {
+         "name":"CD_CLI",
+         "alias":"CD_CLI",
+         "type":"bigint"
+      },
+      {
+         "name":"DATA",
+         "alias":"DATA",
+         "type":"string"
+      },
+      {
+         "name":"SEGMENTO",
+         "alias":"SEGMENTO",
+         "type":"string"
+      },
+      {
+         "name":"HIST_VV",
+         "alias":"HIST_VV",
+         "type":"double"
+      },
+      {
+         "name":"SCORE",
+         "alias":"SCORE",
+         "type":"double"
+      },
+      {
+         "name":"DTH_INGESTAO_ARQUIVO",
+         "alias":"DTH_INGESTAO_ARQUIVO",
+         "type":"timestamp"
+      },
+      {
+         "name":"dt_particao",
+         "alias":"dt_particao",
+         "type":"date"
+      }
+   ]
+}

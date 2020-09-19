@@ -38,9 +38,9 @@ class APIdataIngestion:
         else:
             fields_name = [x.get('name') for x in self.fields]
             if 'dt_particao' not in fields_name:
-                raise Exception("'dt_particao' não informado na sessão de 'fields'")
+                raise Exception("'dt_particao' não informado na sessão de 'fields' do json")
             elif 'dth_ingestao_arquivo' not in fields_name:
-                raise Exception("'dth_ingestao_arquivo' não informado na sessão de 'fields'")
+                raise Exception("'dth_ingestao_arquivo' não informado na sessão de 'fields' do json")
 
     def get_file_paths_to_process(self):
         """ Get files to process in stage """

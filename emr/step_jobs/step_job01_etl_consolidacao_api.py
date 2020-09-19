@@ -10,8 +10,6 @@ s3_fs = s3fs.S3FileSystem()
 athena = boto3.client('athena')
 s3 = boto3.resource('s3')
 
-_, path_metadata_json, bucket, path_base_stage, path_base_target, current_date = argv
-
 
 class APIdataIngestion:
 
@@ -21,12 +19,6 @@ class APIdataIngestion:
         self.path_base_stage = argv[3]
         self.path_base_target = argv[4]
         self.current_date = argv[5]
-        self.database = None
-        self.table = None
-        self.fields = None
-
-    def get_json_metadata(self):
-        """ Get json file with metadata to athena table """
 
         with open(self.path_metadata_json, 'r') as f:
             att = json.load(f)
@@ -36,7 +28,19 @@ class APIdataIngestion:
         self.fields = att.get('fields')
 
         if not self.table or not self.table.startswith('tb'):
-            raise Exception("Campo 'table' não informado ou fora do padrão de nomenclatura. Ex: tb_nomedomodelo")
+            raise Exception("'table' não informado ou fora do padrão de nomenclatura no json. Ex: tb_nomedomodelo")
+
+        if not self.database:
+            raise Exception("'database' não informado no json")
+
+        if not self.fields:
+            raise Exception("'fields' não informados no json")
+        else:
+            fields_name = [x.get('name') for x in self.fields]
+            if 'dt_particao' not in fields_name:
+                raise Exception("'dt_particao' não informado na sessão de 'fields'")
+            elif 'dth_ingestao_arquivo' not in fields_name:
+                raise Exception("'dth_ingestao_arquivo' não informado na sessão de 'fields'")
 
     def get_file_paths_to_process(self):
         """ Get files to process in stage """
@@ -50,7 +54,8 @@ class APIdataIngestion:
                 lst_paths_final.append(path)
         return lst_paths_final
 
-    def casting_fields(self, data_frame, schema_casting):
+    @staticmethod
+    def casting_fields(data_frame, schema_casting):
         """ casting fields of input files """
 
         return data_frame.select([
@@ -82,14 +87,13 @@ class APIdataIngestion:
     def remove_old_files_from_stage(self):
         """ Remove processed files from stage area """
 
-        s3_bucket = s3.Bucket(bucket)
+        s3_bucket = s3.Bucket(self.bucket)
         for file in self.get_file_paths_to_process():
             s3_bucket.objects.filter(Prefix=file.replace(self.bucket + '/', '')).delete()
             print(f'Arquivos deletados da area de stage {file}')
 
     def main(self):
         print("Iniciando Ingestoes ...")
-        self.get_json_metadata()
         print("Obtendo arquivos/particoes da area de stage para processamento ...")
         print()
         files = self.get_file_paths_to_process()
